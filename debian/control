@@ -1,15 +1,85 @@
-Source: template-repository
-Section: unknown
+Source: kf6-kxmlgui
+Section: libs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Aurélien COUDERC <coucouf@debian.org>,
+           Patrick Franz <deltaone@debian.org>,
+Build-Depends: cmake (>= 3.16~),
+               debhelper-compat (= 13),
+               dh-sequence-kf6,
+               dh-sequence-pkgkde-symbolshelper,
+               doxygen,
+               extra-cmake-modules (>= 6.6.0~),
+               libkf6config-dev (>= 6.6.0~),
+               libkf6configwidgets-dev (>= 6.6.0~),
+               libkf6coreaddons-dev (>= 6.6.0~),
+               libkf6globalaccel-dev (>= 6.6.0~),
+               libkf6guiaddons-dev (>= 6.6.0~),
+               libkf6i18n-dev (>= 6.6.0~),
+               libkf6iconthemes-dev (>= 6.6.0~),
+               libkf6itemviews-dev (>= 6.6.0~),
+               libkf6widgetsaddons-dev (>= 6.6.0~),
+               libxkbcommon-dev,
+               qt6-base-dev (>= 6.5.0+dfsg~),
+               qt6-base-private-dev (>= 6.5.0+dfsg~),
+               qt6-tools-dev (>= 6.5.0~),
+Standards-Version: 4.7.0
+Homepage: https://invent.kde.org/frameworks/kxmlgui
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/kde/kf6-kxmlgui
+Vcs-Git: https://salsa.debian.org/qt-kde-team/kde/kf6-kxmlgui.git
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: libkf6xmlgui-data
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: User configurable main windows
+ framework for designing the user interface
+ of an application using XML, using the idea
+ of actions.
+ .
+ This package contains the data files.
+
+Package: libkf6xmlgui-dev
+Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: libkf6config-dev (>= 6.6.0~),
+         libkf6configwidgets-dev (>= 6.6.0~),
+         libkf6globalaccel-dev (>= 6.6.0~),
+         libkf6guiaddons-dev (>= 6.6.0~),
+         libkf6itemviews-dev (>= 6.6.0~),
+         libkf6xmlgui6 (= ${binary:Version}),
+         qt6-base-dev (>= 6.5.0+dfsg~),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Recommends: libkf6xmlgui-doc (= ${source:Version}),
+Description: User configurable main windows - development files
+ framework for designing the user interface
+ of an application using XML, using the idea
+ of actions.
+ .
+ Contains development files for kxmlgui.
+Multi-Arch: same
+
+Package: libkf6xmlgui-doc
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+Description: User configurable main windows - documentation
+ framework for designing the user interface
+ of an application using XML, using the idea
+ of actions.
+ .
+ This package contains the qch documentation files.
+Section: doc
+
+Package: libkf6xmlgui6
+Architecture: any
+Multi-Arch: same
+Depends: libkf6xmlgui-data (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends},
+Description: User configurable main windows
+ framework for designing the user interface
+ of an application using XML, using the idea
+ of actions.
