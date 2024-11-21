@@ -1,0 +1,4 @@
+usr/include/KF6/KXmlGui/
+usr/lib/*/cmake/KF6XmlGui/*
+usr/lib/*/libKF6XmlGui.so
+usr/lib/*/qt6/plugins/designer/kxmlgui6widgets.so
