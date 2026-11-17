@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fbce7b0..c8f80df 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,6 +46,13 @@ add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Des
+ # Dependencies
+ set(REQUIRED_QT_VERSION 6.5.0)
+ find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets Xml Network PrintSupport)
++# Since Qt 6.10 private module targets ship as standalone CMake packages and
++# are no longer auto-created by the module's targets file; on Qt >= 6.9 the
++# CorePrivate component resolves to the Qt6CorePrivate package (backport from
++# upstream master).
++if(Qt6Core_VERSION VERSION_GREATER_EQUAL "6.9.0")
++    find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED CorePrivate)
++endif()
+ 
+ # shall we use DBus?
+ # enabled per default on Linux & BSD systems
