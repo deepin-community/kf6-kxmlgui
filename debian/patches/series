@@ -1,1 +1,2 @@
 cross.patch
+find_qt6_coreprivate_on_qt6_9.patch
